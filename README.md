@@ -13,6 +13,7 @@ A seamless repair application.
 https://github.com/Xnite-X/service_yuk
 
 ## Branch for Hustler
+https://github.com/Xnite-X/service_yuk/tree/Hustler
 
 ## Branch for Hipster
 https://github.com/Xnite-X/service_yuk/tree/Hipster
