@@ -1,16 +1,20 @@
-# service_yuk
+![E LOGO](https://github.com/Xnite-X/service_yuk/assets/48861223/8ca58c29-f947-4ee7-a305-4bef7fb8273c)
 
-A new Flutter project.
+# Service Yuk
+A seamless repair application.
 
-## Getting Started
+## Build By 4GeniusCoders
+### Juanda Gilang Purnomo
+### Sally Suprapto
+### Vincensius Damar Adyatma
+### Emmanuel Krishnandito Laksana
 
-This project is a starting point for a Flutter application.
+## Branch for Hacker
 
-A few resources to get you started if this is your first Flutter project:
+## Branch for Hustler
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Branch for Hipster
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
