@@ -10,7 +10,7 @@ A seamless repair application.
 ### Emmanuel Krishnandito Laksana
 
 ## Branch for Hacker
-https://github.com/Xnite-X/service_yuk
+https://github.com/Xnite-X/service_yuk/tree/Hacker
 
 ## Branch for Hustler
 https://github.com/Xnite-X/service_yuk/tree/Hustler
