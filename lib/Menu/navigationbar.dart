@@ -18,7 +18,6 @@ class NavigationMenu extends StatelessWidget {
       onDestinationSelected: onItemTapped,
       destinations: const [
         NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
-        NavigationDestination(icon: Icon(Icons.shopping_cart), label: 'Cart'),
         NavigationDestination(icon: Icon(Icons.receipt), label: 'Transaksi'),
         NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
       ],

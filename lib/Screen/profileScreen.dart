@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:service_yuk/Screen/homeScreen.dart';
 import 'package:service_yuk/Screen/loginScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -46,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       await FirebaseAuth.instance.signOut();
       // Redirect ke halaman login setelah logout
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => HomeScreen()),
         (Route<dynamic> route) => false,
       );
     } catch (e) {
@@ -59,19 +60,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
         centerTitle: true,
-        actions: [
-          // Menambahkan tombol logout ke AppBar
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              _logout();
-            },
-          ),
-        ],
+        actions: user != null
+            ? [
+                // Only show the logout button if the user is logged in
+                IconButton(
+                  icon: const Icon(Icons.logout),
+                  onPressed: _logout,
+                ),
+              ]
+            : [],
       ),
-      body: user != null ? _buildProfileView() : _buildLoginButton(),
+      body: user != null
+          ? _buildProfileView()
+          : _buildLoginButton(), // Set the body conditionally based on the user's login status
     );
   }
 
@@ -79,8 +81,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Center(
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const LoginScreen()),
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => LoginScreen()),
+            (Route<dynamic> route) => false,
           );
         },
         child: const Text('Login'),

@@ -17,7 +17,7 @@ class ServiceCategory {
     List<ServiceCategory> serviceCategory = [];
 
     serviceCategory.add(ServiceCategory(
-      name: 'Handphone',
+      name: 'Smartphone',
       boxColor: const Color(0xff92A3FD),
       icon: const Icon(Icons.smartphone),
       onTap: () {
@@ -26,7 +26,6 @@ class ServiceCategory {
             builder: (context) => const OrderHandphoneScreen(),
           ),
         );
-        // Tambahkan logika untuk menangani ketika kategori "Handphone" diklik di sini
       },
     ));
 
@@ -37,7 +36,7 @@ class ServiceCategory {
         onTap: () {}));
 
     serviceCategory.add(ServiceCategory(
-        name: 'Komputer',
+        name: 'Computer',
         boxColor: const Color(0xff92A3FD),
         icon: const Icon(Icons.computer),
         onTap: () {}));
