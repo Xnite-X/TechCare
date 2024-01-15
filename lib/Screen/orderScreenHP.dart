@@ -90,6 +90,11 @@ class _OrderHandphoneScreenState extends State<OrderHandphoneScreen> {
         .join(', ');
   }
 
+  double _calculateTotal() {
+    // Here you could add additional charges to the total if needed
+    return _selectedSparePart?.price ?? 0.0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -231,7 +236,15 @@ class _OrderHandphoneScreenState extends State<OrderHandphoneScreen> {
             ElevatedButton(
               onPressed: _onOrderButtonPressed,
               child: const Text('Submit Order'),
-            )
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Total Price: \$${_calculateTotal()}',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),

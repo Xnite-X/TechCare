@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:service_yuk/Screen/TransactionScreen.dart';
 import 'package:service_yuk/Screen/profileScreen.dart';
 import 'package:service_yuk/models/service_category.dart';
 import 'package:service_yuk/Menu/navigationbar.dart';
@@ -12,8 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<ServiceCategory> serviceCategory = [];
-  int _selectedIndex = 0; // Untuk melacak tab yang dipilih
-
+  int _selectedIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -21,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getServiceCategory() {
-    // Mengasumsikan ServiceCategory.getServiceCategory() mengambil data
     serviceCategory = ServiceCategory.getServiceCategory(context);
   }
 
@@ -41,8 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _bodyContent() {
     List<Widget> widgetOptions = <Widget>[
       _serviceCategory(),
-      Text('Wishlist'), // Ganti dengan layar Wishlist
-      Text('Transaksi'), // Ganti dengan layar Transaksi
+      TransactionScreen(),
       ProfileScreen(),
     ];
 
@@ -52,6 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Column _serviceCategory() {
+    final User? user = FirebaseAuth.instance.currentUser;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -83,36 +84,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) {
                   final category = serviceCategory[index];
                   return InkWell(
-                    onTap: category.onTap, // Menambahkan onTap handler ke sini
-                    child: Container(
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: category.boxColor.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
+                    onTap: user != null ? category.onTap : null,
+                    child: Opacity(
+                      opacity: user != null ? 1.0 : 0.5,
+                      child: Container(
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: category.boxColor.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(0.8),
+                                child: category.icon,
+                              ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(0.8),
-                              child: category.icon,
+                            Text(
+                              category.name,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                  fontSize: 14),
                             ),
-                          ),
-                          Text(
-                            category.name,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                                fontSize: 14),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -138,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
   AppBar _appBar() {
     return AppBar(
       title: const Text(
-        "Service Yuk",
+        "TechCare",
         style: TextStyle(
             color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
       ),

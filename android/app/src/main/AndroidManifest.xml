@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="Service Yuk"
+        android:label="Tech Care"
         android:name="${applicationName}"
-        android:icon="@mipmap/logo">
+        android:icon="@mipmap/elogo">
         android:enableOnBackInvokedCallback="true"
         <activity
             android:name=".MainActivity"

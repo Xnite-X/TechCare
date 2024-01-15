@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:service_yuk/Screen/homeScreen.dart';
 import '../Widget/payment_option_tile.dart'; // Ensure this path is correct
 
 class PaymentMethodScreen extends StatelessWidget {
@@ -7,7 +8,14 @@ class PaymentMethodScreen extends StatelessWidget {
       content: Text('Payment Success with $paymentMethod'),
       duration: Duration(seconds: 2),
     );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar).closed.then((reason) {
+      if (reason != SnackBarClosedReason.action) {
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+          (Route<dynamic> route) => false,
+        );
+      }
+    });
   }
 
   @override
