@@ -1,4 +1,4 @@
-# Service Yuk
+# TechCare
 A seamless repair application.
 
 ## Build By 4GeniusCoders
